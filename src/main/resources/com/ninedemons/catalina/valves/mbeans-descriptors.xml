@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<mbeans-descriptors>
+
+  <mbean name="LatencyValve"
+         description="Valve that adds latency to requests"
+         domain="Catalina"
+         group="Valve"
+         type="com.ninedemons.catalina.valves.LatencyValve">
+
+    <attribute name="enabled"
+               description="Flag to indicate if this valve is enabled."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="latencyInMilliseconds"
+               description="Latency to add to matching requests in milliseconds."
+               type="long"/>
+
+    <operation name="addUriPattern"
+               description="Add a URI pattern to match. See http://download.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html for details"
+               impact="ACTION"
+               returnType="void">
+      <parameter name="uriPattern"
+                 description="Java style regular expression to match, e.g. /dam/.*\.html"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation name="getUriPatterns"
+               description="Show list of URI patterns we match against"
+               impact="INFO"
+               returnType="java.util.List">
+    </operation>
+
+    <operation name="clearUriPatterns"
+               description="Clears all URI patterns"
+               impact="ACTION"
+               returnType="void">
+    </operation>
+
+
+  </mbean>
+
+</mbeans-descriptors>
